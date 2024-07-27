@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leilão - CRUD</title>
+</head>
+<body>
+    <h1>Leilão - CRUD</h1>
+
+    <h2>Adicionar Leilão</h2>
+    <form id="formAdicionar">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required></textarea><br><br>
+
+        <label for="valorInicial">Valor Inicial:</label>
+        <input type="number" id="valorInicial" name="valorInicial" required><br><br>
+
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <h2>Listar Leilões</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Valor Inicial</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="listaLeiloes">
+            <!-- Aqui serão listados os leilões -->
+        </tbody>
+    </table>
+
+    <h2>Editar Leilão</h2>
+    <form id="formEditar">
+        <label for="nomeEditar">Nome:</label>
+        <input type="text" id="nomeEditar" name="nomeEditar" required><br><br>
+
+        <label for="descricaoEditar">Descrição:</label>
+        <textarea id="descricaoEditar" name="descricaoEditar" required></textarea><br><br>
+
+        <label for="valorInicialEditar">Valor Inicial:</label>
+        <input type="number" id="valorInicialEditar" name="valorInicialEditar" required><br><br>
+
+        <button type="submit">Editar</button>
+    </form>
+
+    <h2>Excluir Leilão</h2>
+    <form id="formExcluir">
+        <label for="idExcluir">ID:</label>
+        <input type="number" id="idExcluir" name="idExcluir" required><br><br>
+
+        <button type="submit">Excluir</button>
+    </form>
+
+    <script>
+        document.getElementById('formAdicionar').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const descricao = document.getElementById('descricao').value;
+            const valorInicial = document.getElementById('valorInicial').value;
+
+            fetch('/api/leiloes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nome, descricao, valorInicial })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Atualizar a lista de leilões
+                carregarLeiloes();
+            });
+        });
+
+        document.getElementById('formEditar').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nomeEditar').value;
+            const descricao = document.getElementById('descricaoEditar').value;
+            const valorInicial = document.getElementById('valorInicialEditar').value;
+
+            fetch('/api/leiloes', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nome, descricao, valorInicial })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Atualizar a lista de leilões
+                carregarLeiloes();
+            });
+        });
+
+        document.getElementById('formExcluir').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const id = document.getElementById('idExcluir').value;
+
+            fetch(`/api/leiloes/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Atualizar a lista de leilões
+                carregarLeiloes();
+            });
+        });
+
+        function carregarLeiloes() {
+            fetch('/api/leiloes')
+            .then(response => response.json())
+            .then(data => {
+                const listaLeiloes = document.getElementById('listaLeiloes');
+                listaLeiloes.innerHTML = '';
+                data.forEach(leilao => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${leilao.nome}</td>
+                        <td>${leilao.descricao}</td>
+                        <td>${leilao.valorInicial}</td>
+                        <td>
+                            <button onclick="editarLeilao(${leilao.id})">Editar</button>
+                            <button onclick="excluirLeilao(${leilao.id})">Excluir</button>
+                        </td>
+                    `;
+                    listaLeiloes.appendChild(row);
+                });
+            });
+        }
+
+        function editarLeilao(id) {
+            // Preencher o formulário de edição com os dados do leilão
+        }
+
+        function excluirLeilao(id) {
+            document.getElementById('idExcluir').value = id;
+        }
+
+        // Carregar leilões ao carregar a página
+        carregarLeiloes();
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+# Requisições HTTP
+
+# Item de leilão
+# ----------------------------
+
+### Registrar lance a item de leilão
+POST /itemdeleilao/2 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"valor":101.0,
+	"participante":{
+		"id":1
+	}
+}
+
+
+### Encerrar leilão
+PATCH /itemdeleilao/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+### Encerrar leilão
+POST /itemdeleilao/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+### Exclusão de item de leilão
+DELETE /itemdeleilao/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Busca de item de leilão
+GET /itemdeleilao/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+### Atualização de item de leilão
+PUT /itemdeleilao/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"nome": "bicicleta CALOI",
+	"valorMinimo": 100.0,
+	"leilaoAberto": true
+}
+
+
+### Criação de item de leilão
+POST /itemdeleilao HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"nome": "cadeira",
+	"valorMinimo": 100.0,
+	"leilaoAberto": true
+}
+
+### Listagem de itens de leilão
+GET /itemdeleilao HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+# Lance
+# ----------------------------
+
+### Exclusão de lance
+DELETE /lance/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Busca de lance
+GET /lance/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Atualização de lance
+PUT /lance/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"valor": 100.0,
+	"participante": {
+		"id": 1
+	}
+}
+
+### Listagem de lances
+GET /lance HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+# Participante
+# ----------------------------
+
+### Exclusão de participante
+DELETE /participante/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Busca de participante
+GET /participante/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+### Atualização de participante
+PUT /participante/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"nome": "João",
+	"cpf": "12345678901"
+}
+
+### Criação de participante
+POST /participante HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+	"nome": "Maria",
+	"cpf": "12345678901"
+}
+
+### Listagem de participantes
+GET /participante HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
