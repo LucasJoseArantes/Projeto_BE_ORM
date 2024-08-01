@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import br.edu.iftm.entregas.service.PacoteService;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -30,23 +32,18 @@ public class PacoteController {
     @GetMapping("/{id}")
     public ResponseEntity<Pacote> getPacoteById(@PathVariable Long id) {
         Optional<Pacote> pacote = pacoteService.getPacoteById(id);
-        return pacote.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return pacote.map(ResponseEntity);
     }
 
     // PUT /pacotes/{id} - Atualiza as informações de um pacote
     @PutMapping("/{id}")
     public ResponseEntity<Pacote> updatePacote(@PathVariable Long id, @RequestBody Pacote pacoteDetails) {
         Optional<Pacote> updatedPacote = pacoteService.updatePacote(id, pacoteDetails);
-        return updatedPacote.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // DELETE /pacotes/{id} - Remove um pacote
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePacote(@PathVariable Long id) {
-        if (pacoteService.deletePacote(id)) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        pacoteService.deletePacote(id);
     }
 }
