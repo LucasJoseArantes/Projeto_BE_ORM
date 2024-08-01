@@ -1,0 +1,55 @@
+GET /enderecos HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+POST /enderecos HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "id": 1,
+    "rua": "test St",
+    "numero": "123",
+    "cidade": "Test City",
+    "estado": "Teste State",
+    "cep": "12345678",
+}
+
+#---------------------------------------------
+
+GET /pacotes HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+POST /pacotes HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "id": "12345",
+    "destinatario": "Teste Dest",
+    "endereco": {
+        "id": 1
+    },
+    "status": "entregue"
+}
+
+#---------------------------------------------
+
+GET /rastreamentos HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+POST /rastreamentos HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "id": 1,
+    "codigoRastreio": "AB123456789CD",
+    "dataHora": "2023-10-01T12:00:00",
+    "status": "Em trânsito",
+    "localizacao": "Centro de Distribuição"
+}
