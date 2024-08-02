@@ -23,6 +23,16 @@ public class Endereco {
     private String estado;
     private String cep;
 
+    public Endereco(int id, String rua, String numero, String cidade, String estado, String cep) {
+        super();
+        this.id = id;
+        this.rua = rua;
+        this.numero = numero;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.cep = cep;
+    }
+
     public String getEnderecoCompleto() {
         return rua + ", " + numero + ", " + cidade + ", " + estado + ", " + cep;
     }

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PacoteService {
@@ -22,23 +21,19 @@ public class PacoteService {
         return pacoteRepository.save(pacote);
     }
 
-    public Optional<Pacote> getPacoteById(Long id) {
-        return pacoteRepository.findById(id);
+    public Pacote getPacoteById(int id) {
+        return pacoteRepository.findById(id).get();
     }
 
-    public Optional<Pacote> updatePacote(Long id, Pacote pacoteDetails) {
-        return pacoteRepository.findById(id).map(pacote -> {
-            pacote.setDestinatario(pacoteDetails.getDestinatario());
-            pacote.setEndereco(pacoteDetails.getEndereco());
-            pacote.setStatus(pacoteDetails.getStatus());
-            return pacoteRepository.save(pacote);
-        });
+    public Pacote updatePacote(int id, Pacote item) {
+        Pacote itemExistente = pacoteRepository.findById(id).get();
+        itemExistente.setDestinatario(item.getDestinatario());
+        itemExistente.setEndereco(item.getEndereco());
+        itemExistente.setStatus(item.getStatus());
+		return pacoteRepository.save(itemExistente);
     }
 
-    public boolean deletePacote(Long id) {
-        return pacoteRepository.findById(id).map(pacote -> {
-            pacoteRepository.delete(pacote);
-            return true;
-        }).orElse(false);
+    public void deletePacote(int id) {
+        pacoteRepository.deleteById(id);
     }
 }

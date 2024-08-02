@@ -5,47 +5,47 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.entregas.EntregasApplication;
-
 import br.edu.iftm.entregas.model.Pacote;
 import br.edu.iftm.entregas.model.Rastreamento;
+import br.edu.iftm.entregas.model.Endereco;
 import br.edu.iftm.entregas.repository.EnderecoRepository;
-import br.edu.iftm.leilao.model.ItemDeLeilao;
-import br.edu.iftm.leilao.model.Lance;
-import br.edu.iftm.leilao.model.Participante;
-import br.edu.iftm.leilao.repository.ItemDeLeilaoRepository;
-import br.edu.iftm.leilao.repository.LanceRepository;
-import br.edu.iftm.leilao.repository.ParticipanteRepository;
+import br.edu.iftm.entregas.repository.PacoteRepository;
+import br.edu.iftm.entregas.repository.RastreamentoRepository;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 @SpringBootApplication
 public class EntregasApplication implements CommandLineRunner {
-	@Autowired
-	private PacoteRepository pacote;
+    
+    @Autowired
+    private PacoteRepository pacoteRepository;
 
-	@Autowired
-	private RastreamentoRepository rastreamento;
+    @Autowired
+    private RastreamentoRepository rastreamentoRepository;
 
-	@Autowired
-	private EnderecoRepository endereco;
+    @Autowired
+    private EnderecoRepository enderecoRepository;
 
-	public static void main(String[] args) {
-		SpringApplication.run(EntregasApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EntregasApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-		Pacote pacote = new Pacote(1 , "João", "Rua 1", "Em trânsito");
-		Rastreamento rastreamento = new Rastreamento(123, "202020", "2021-10-10 10:00", "Em trânsito", "Rua 1");
-		Endereco endereco = new Endereco(123, "Rua 1", "Bairro 1", "Cidade 1", "Minas Gerais", "12345-678");
+    @Override
+    public void run(String... args) throws Exception {
+        
+        Endereco endereco = new Endereco(123, "Rua 1", "Bairro 1", "Cidade 1", "Minas Gerais", "12345-678");
 
-		pacote.save(pacote);
-		rastreamento.save(rastreamento);
-		endereco.save(endereco);
+        Pacote pacote = new Pacote(1, "João", endereco, "Em trânsito");
 
-		System.out.println("Pacote: " + pacote.findAll());
-		System.out.println("Rastreamento: " + rastreamento.findAll());
-		System.out.println("Endereco: " + endereco.findAll());
-	
-	}
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        java.util.Date parsedDate = dateFormat.parse("2021-10-10 10:00");
+        Date dataHora = new Date(parsedDate.getTime());
 
+        Rastreamento rastreamento = new Rastreamento(123, "202020", dataHora, "Em trânsito", "Rua 1", pacote);
+
+        System.out.println("Pacotes: " + pacote);
+        System.out.println("Rastreamentos: " + rastreamento); 
+        System.out.println("Endereços: " + endereco);
+    }
 }

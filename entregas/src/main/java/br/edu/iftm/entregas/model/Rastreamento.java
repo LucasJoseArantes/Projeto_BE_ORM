@@ -1,9 +1,11 @@
 package br.edu.iftm.entregas.model;
 
+import java.sql.Date;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,12 +20,21 @@ public class Rastreamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String codigoRastreio;
-    private String dataHora;
+    private String codigo;
+    private Date data;
     private String status;
-    private String localizacao;
+    private String local;
 
-    public String getResumo() {
-        return "Código de Rastreio: " + codigoRastreio + ", Data e Hora: " + dataHora + ", Status: " + status;
+    @ManyToOne
+    private Pacote pacote;
+
+    public Rastreamento(int id, String codigo, Date data, String status, String local, Pacote pacote) {
+        super();
+        this.id = id;
+        this.codigo = codigo;
+        this.data = data;
+        this.status = status;
+        this.local = local;
+        this.pacote = pacote;
     }
 }
