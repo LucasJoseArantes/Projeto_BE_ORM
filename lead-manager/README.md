@@ -2,6 +2,19 @@
 
 **LeadManager** é uma aplicação web para gerenciar leads com operações CRUD e autenticação de usuários, desenvolvida em Spring Boot.
 
+## Requisitos Funcionais
+- Cadastro de Leads: Registra novos leads capturados, incluindo nome, e-mail, telefone e origem.
+
+- Listagem de Leads: Permite visualizar leads com filtros e paginação.
+
+- Atualização de Leads: Edição das informações de um lead existente.
+
+- Exclusão de Leads: Remove leads do sistema.
+
+- Autenticação e Autorização: Apenas usuários autenticados têm acesso às funcionalidades.
+
+- Segmentação de Leads: Filtra e segmenta leads com base em critérios específicos.
+
 ## Database
 
 - **Banco de Dados**: MySQL com tabelas para `Source`, `User`, `Lead`, `Tag`, e `Lead_Tag`.
