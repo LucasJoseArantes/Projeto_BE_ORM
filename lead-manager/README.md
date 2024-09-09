@@ -12,7 +12,8 @@
   - **Tag**: Armazena tags associadas aos leads para segmentação.
   - **Lead_Tag**: Relacionamento many-to-many entre leads e tags.
 
-  
+ ![Diagrama ER do LeadManager](https://github.com/LucasJoseArantes/Projeto_BE_ORM/blob/main/lead-manager/src/main/resources/static/bd_lead_manager.png?raw=true)
+
 
 ## API
 
