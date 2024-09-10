@@ -1,6 +1,5 @@
 package com.example.lead_manager.controller;
 
-import com.example.lead_manager.model.Lead;
 import com.example.lead_manager.model.Tag;
 import com.example.lead_manager.service.TagService;
 
