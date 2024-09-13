@@ -1,6 +1,5 @@
 package br.edu.iftm.entregas.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import br.edu.iftm.entregas.model.Endereco;
