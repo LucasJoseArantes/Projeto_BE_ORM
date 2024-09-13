@@ -58,9 +58,9 @@ public class LeadController {
             @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content)
     })
-    public ResponseEntity<Lead> createLead(@RequestBody Lead lead) {
-        Lead createdLead = leadService.save(lead);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdLead);
+    public ResponseEntity<Lead> createLead(@org.springframework.web.bind.annotation.RequestBody Lead lead) {
+        Lead savedLead = leadService.save(lead);
+        return new ResponseEntity<>(savedLead, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

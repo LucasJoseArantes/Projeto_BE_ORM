@@ -7,10 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "tblead")
+@Table(name = "tb_lead")
 @Data
 public class Lead {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

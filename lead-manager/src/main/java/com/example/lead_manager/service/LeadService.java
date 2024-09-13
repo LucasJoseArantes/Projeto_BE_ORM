@@ -5,6 +5,7 @@ import com.example.lead_manager.repository.LeadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +27,10 @@ public class LeadService {
         return leadRepository.findBySourceId(sourceId);
     }
 
-    public Lead save(Lead lead) {
+   public Lead save(Lead lead) {
+        if (lead.getDataCadastro() == null) {
+            lead.setDataCadastro(java.sql.Timestamp.valueOf(LocalDateTime.now()));
+        }
         return leadRepository.save(lead);
     }
 
