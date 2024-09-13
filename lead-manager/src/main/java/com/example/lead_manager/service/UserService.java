@@ -13,7 +13,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Optional<User> findById(Long id) {
+    public Optional<User> findById(String id) {
         return userRepository.findById(id);
     }
 
@@ -25,7 +25,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         userRepository.deleteById(id);
     }
 }

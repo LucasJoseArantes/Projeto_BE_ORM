@@ -1,0 +1,21 @@
+package com.example.lead_manager.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+
+@Service    
+public class AuthService implements UserDetailsService{
+
+    @Autowired
+    UserRepository repository;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
+    }
+
+    
+}
