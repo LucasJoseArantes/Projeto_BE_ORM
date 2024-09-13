@@ -30,7 +30,7 @@ public class ItemDeLeilao {
 	private boolean leilaoAberto;
 
 	@OneToMany
-	private List<Lance> lancesRecebidos = new ArrayList<Lance>();
+	private List<Lance> lancesRecebidos = new ArrayList<>();
 
 	@OneToOne
 	private Lance lanceVencedor;
