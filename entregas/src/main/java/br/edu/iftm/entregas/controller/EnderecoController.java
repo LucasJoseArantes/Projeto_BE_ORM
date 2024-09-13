@@ -12,8 +12,12 @@ import java.util.List;
 @RequestMapping("/enderecos")
 public class EnderecoController {
 
-    @Autowired
-    private EnderecoService enderecoService;
+    private final EnderecoService enderecoService;
+
+    
+    public EnderecoController(EnderecoService enderecoService) {
+        this.enderecoService = enderecoService;
+    }
 
     // GET /enderecos - Consulta todos os endereços
     @GetMapping
