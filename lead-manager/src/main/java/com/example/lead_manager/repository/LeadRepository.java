@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface LeadRepository extends JpaRepository<Lead, Long> {
     List<Lead> findBySourceId(Long sourceId);
-    List<Lead> findByUserId(Long userId);
 }

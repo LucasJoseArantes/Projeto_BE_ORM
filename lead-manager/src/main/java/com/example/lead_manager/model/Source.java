@@ -1,7 +1,7 @@
 package com.example.lead_manager.model;
 
 import jakarta.persistence.*;
-import java.util.List;
+
 import lombok.Data;
 
 @Entity
@@ -15,8 +15,5 @@ public class Source {
     private String nome;
 
     private String descricao;
-
-    @OneToMany(mappedBy = "source")
-    private List<Lead> leads;
 
 }

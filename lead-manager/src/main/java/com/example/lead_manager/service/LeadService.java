@@ -26,10 +26,6 @@ public class LeadService {
         return leadRepository.findBySourceId(sourceId);
     }
 
-    public List<Lead> findByUserId(Long userId) {
-        return leadRepository.findByUserId(userId);
-    }
-
     public Lead save(Lead lead) {
         return leadRepository.save(lead);
     }

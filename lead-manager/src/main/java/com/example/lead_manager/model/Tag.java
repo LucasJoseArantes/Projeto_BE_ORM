@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tag")
 @Data
@@ -17,6 +19,7 @@ public class Tag {
     @Column(nullable = false, unique = true)
     private String nome;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "tags")
     private List<Lead> leads;
 }

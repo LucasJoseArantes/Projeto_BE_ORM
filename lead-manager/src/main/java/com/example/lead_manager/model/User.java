@@ -3,7 +3,6 @@ package com.example.lead_manager.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -22,9 +21,6 @@ public class User {
 
     @Column(nullable = false)
     private String role;
-
-    @OneToMany(mappedBy = "user")
-    private List<Lead> leads;
 
 
 }

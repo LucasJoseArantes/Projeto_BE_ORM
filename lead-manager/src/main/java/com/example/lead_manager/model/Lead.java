@@ -30,11 +30,7 @@ public class Lead {
     @ManyToOne
     @JoinColumn(name = "source_id")
     private Source source;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
+    
     @ManyToMany
     @JoinTable(
         name = "Lead_Tag",

@@ -84,7 +84,6 @@ public class LeadController {
             updatedLead.setEmail(leadDetails.getEmail());
             updatedLead.setTelefone(leadDetails.getTelefone());
             updatedLead.setSource(leadDetails.getSource());
-            updatedLead.setUser(leadDetails.getUser());
             return ResponseEntity.ok(leadService.save(updatedLead));
         } else {
             return ResponseEntity.notFound().build();
