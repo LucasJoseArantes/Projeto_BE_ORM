@@ -1,6 +1,5 @@
 package br.edu.iftm.entregas;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,24 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.edu.iftm.entregas.model.Pacote;
 import br.edu.iftm.entregas.model.Rastreamento;
 import br.edu.iftm.entregas.model.Endereco;
-import br.edu.iftm.entregas.repository.EnderecoRepository;
-import br.edu.iftm.entregas.repository.PacoteRepository;
-import br.edu.iftm.entregas.repository.RastreamentoRepository;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 @SpringBootApplication
 public class EntregasApplication implements CommandLineRunner {
-    
-    @Autowired
-    private PacoteRepository pacoteRepository;
-
-    @Autowired
-    private RastreamentoRepository rastreamentoRepository;
-
-    @Autowired
-    private EnderecoRepository enderecoRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(EntregasApplication.class, args);
