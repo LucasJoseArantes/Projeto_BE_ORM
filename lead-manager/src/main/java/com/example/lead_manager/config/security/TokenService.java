@@ -4,11 +4,10 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.example.auth.domain.user.User;
 import com.example.lead_manager.model.Users;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import java.util.Date;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -18,14 +17,15 @@ import java.time.ZoneOffset;
 public class TokenService {
     @Value("${api.security.token.secret}")
     private String secret;
+    
 
     public String generateToken(Users user){
         try{
             Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT.create()
                     .withIssuer("auth-api")
-                    .withSubject(user.getLogin())
-                    .withExpiresAt(genExpirationDate())
+                    .withSubject(user.getUsername())
+                    .withExpiresAt(Date.from(genExpirationDate()))
                     .sign(algorithm);
             return token;
         } catch (JWTCreationException exception) {
