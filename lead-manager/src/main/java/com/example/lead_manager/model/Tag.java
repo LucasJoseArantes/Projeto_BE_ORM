@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.util.List;
 
+import com.example.lead_manager.model.User.Lead;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

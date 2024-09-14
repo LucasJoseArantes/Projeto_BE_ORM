@@ -1,10 +1,13 @@
-package com.example.lead_manager.model;
+package com.example.lead_manager.model.User;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
+
+import com.example.lead_manager.model.Source;
+import com.example.lead_manager.model.Tag;
 
 @Entity
 @Table(name = "tb_lead")

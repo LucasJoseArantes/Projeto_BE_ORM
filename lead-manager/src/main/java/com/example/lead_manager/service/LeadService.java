@@ -1,6 +1,6 @@
 package com.example.lead_manager.service;
 
-import com.example.lead_manager.model.Lead;
+import com.example.lead_manager.model.User.Lead;
 import com.example.lead_manager.repository.LeadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
