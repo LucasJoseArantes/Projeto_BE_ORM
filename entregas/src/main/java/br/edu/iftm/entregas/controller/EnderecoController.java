@@ -1,6 +1,5 @@
 package br.edu.iftm.entregas.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import br.edu.iftm.entregas.model.Endereco;
@@ -12,8 +11,12 @@ import java.util.List;
 @RequestMapping("/enderecos")
 public class EnderecoController {
 
-    @Autowired
-    private EnderecoService enderecoService;
+    private final EnderecoService enderecoService;
+
+    
+    public EnderecoController(EnderecoService enderecoService) {
+        this.enderecoService = enderecoService;
+    }
 
     // GET /enderecos - Consulta todos os endereços
     @GetMapping
